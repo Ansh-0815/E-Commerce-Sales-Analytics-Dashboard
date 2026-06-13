@@ -21,6 +21,7 @@ The project combines SQL-based data analysis with Power BI visualization to tran
 ## Dataset
 
 **Dataset:** Olist Brazilian E-Commerce Dataset (Kaggle)
+(https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)
 
 The dataset contains information related to:
 
@@ -166,15 +167,15 @@ Visuals:
 
 ### Executive Overview
 
-(Add Screenshot)
+![Executive Overview](Dashboard/Overview.png)
 
 ### Customer Analysis
 
-(Add Screenshot)
+![Customer Analysis](Dashboard/Customer_Analysis.png)
 
 ### Product Analysis
 
-(Add Screenshot)
+![Product Analysis](Dashboard/Product_Analysis.png)
 
 ---
 
