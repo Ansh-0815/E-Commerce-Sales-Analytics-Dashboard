@@ -44,6 +44,19 @@ The dataset contains information related to:
 
 ---
 
+## Data Preparation & Cleaning
+
+Before analysis and dashboard development, several data preparation steps were performed to improve data quality and reporting accuracy:
+
+* Imported and modeled six datasets including Customers, Orders, Order Items, Payments, Products, and Product Category Translation.
+* Integrated the Product Category Translation table to convert Portuguese category names into English for improved dashboard readability.
+* Validated row counts and table relationships after data import.
+* Identified incomplete transaction records for September 2018 that created a misleading decline in revenue trends.
+* Filtered incomplete reporting periods to ensure accurate time-series analysis and business reporting.
+* Performed data quality checks and metric validation before building SQL queries and Power BI dashboards.
+
+---
+
 ## SQL Analysis
 
 The project began with data loading and analysis in MySQL.
