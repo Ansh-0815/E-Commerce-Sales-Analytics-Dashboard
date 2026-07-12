@@ -1,5 +1,5 @@
 -- ============================================================
--- Olist E-Commerce Analysis — SQL Data Pipeline
+-- Olist E-Commerce Analysis - SQL Data Pipeline
 -- Dataset: Brazilian E-Commerce Public Dataset by Olist (Kaggle)
 -- https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce
 -- ============================================================
@@ -7,7 +7,7 @@
 -- warehouse used for exploratory analysis below. The Power BI
 -- dashboard (dashboard/Olist_dashboard.pbix) currently connects
 -- directly to the raw CSVs rather than to these cleaned MySQL
--- tables — see README.md "Reconnecting Power BI to MySQL" for
+-- tables - see README.md "Reconnecting Power BI to MySQL" for
 -- the steps to point it at clean_order_items / clean_products
 -- created in Section 4 below, so the whole pipeline is unified.
 -- ============================================================
@@ -331,7 +331,7 @@ WHERE order_status = 'delivered'
 -- 12. Customer-level RFM (Recency / Frequency / Monetary)
 --     Same methodology as the standalone RFM project, applied
 --     here to Olist customers as a natural extension of this
---     analysis — not currently reflected in the Power BI report.
+--     analysis - not currently reflected in the Power BI report.
 -- ------------------------------------------------------------
 WITH customer_orders AS (
     SELECT
