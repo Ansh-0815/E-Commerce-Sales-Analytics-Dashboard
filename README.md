@@ -250,19 +250,19 @@ Analyzes product category performance and profitability.
 
 ## Executive Overview
 
-![Executive Overview](images/Overview.png)
+![Executive Overview](Dashboard/Overview.png)
 
 ---
 
 ## Customer Analysis
 
-![Customer Analysis](images/Customer_Analysis.png)
+![Customer Analysis](Dashboard/Customer_Analysis.png)
 
 ---
 
 ## Product Analysis
 
-![Product Analysis](images/Product_Analysis.png)
+![Product Analysis](Dashboard/Product_Analysis.png)
 
 ---
 
