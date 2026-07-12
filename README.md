@@ -1,199 +1,286 @@
-Olist E-Commerce Sales Analytics
-End-to-End SQL + MySQL + Power BI Analytics Pipeline
+# Olist E-Commerce Sales Analytics Dashboard
+### End-to-End SQL + MySQL + Power BI Analytics Pipeline
 
-End-to-end business analytics project built on the Brazilian Olist E-Commerce dataset. The project demonstrates a complete analytics pipeline by loading raw CSV data into MySQL, performing data cleaning and business analysis using SQL, and building an interactive Power BI dashboard connected directly to the cleaned MySQL tables through ODBC.
+An end-to-end business analytics project built using the **Olist Brazilian E-Commerce Dataset**. This project demonstrates a complete analytics pipeline by importing raw CSV files into **MySQL**, performing data cleaning and business analysis using **SQL**, and building an interactive **Power BI dashboard** connected directly to the cleaned MySQL tables through **ODBC**.
 
-The objective is to transform raw transactional data into actionable business insights covering sales performance, customer behavior, product performance, payment trends, and operational efficiency.
+The objective of this project is to transform raw transactional data into actionable business insights covering sales performance, customer behavior, product performance, payment trends, and operational efficiency.
 
-Tech Stack
-Database: MySQL
-Business Intelligence: Power BI
-Query Language: SQL
-Data Transformation: Power Query
-Analytics: DAX
-Data Source: Olist Brazilian E-Commerce Dataset (Kaggle)
-Dataset
+---
 
-Source: Olist Brazilian E-Commerce Public Dataset (Kaggle)
+# Tech Stack
+
+- **Database:** MySQL
+- **Business Intelligence:** Power BI
+- **Query Language:** SQL
+- **Data Transformation:** Power Query
+- **Analytics:** DAX
+- **Connection:** ODBC
+- **Dataset:** Olist Brazilian E-Commerce Dataset (Kaggle)
+
+---
+
+# Dataset
+
+**Source:** Olist Brazilian E-Commerce Public Dataset (Kaggle)
 
 The dataset contains information related to:
 
-Customers
-Orders
-Order Items
-Payments
-Products
-Product Category Translation
+- Customers
+- Orders
+- Order Items
+- Payments
+- Products
+- Product Category Translation
 
-Approximately:
+Dataset Size:
 
-99K Orders
-96K Customers
-112K Order Items
-74 Product Categories
-Project Architecture
-Raw CSV Files
-        │
-        ▼
-MySQL Database
-(Data Cleaning & SQL Analysis)
-        │
-        ▼
-Clean Tables
-(clean_order_items, clean_products)
-        │
-        ▼
-ODBC Connection
-        │
-        ▼
-Power BI
-(Power Query + DAX)
-        │
-        ▼
-Interactive Dashboard
+- **99K+ Orders**
+- **96K+ Customers**
+- **112K+ Order Items**
+- **74 Product Categories**
 
-Unlike the earlier version of this project, the dashboard is now connected directly to MySQL instead of importing CSV files into Power BI, making it a true end-to-end SQL analytics pipeline.
+---
 
-Business Objectives
-Monitor overall sales performance
-Analyze customer purchasing behavior
-Evaluate product category performance
-Understand customer geographic distribution
-Analyze payment preferences
-Monitor delivery performance
-Generate business recommendations using interactive dashboards
-Data Preparation & Cleaning
+# Project Architecture
 
-Before dashboard development, the data was cleaned and validated inside MySQL.
+```text
+                Raw CSV Files
+                      │
+                      ▼
+               MySQL Database
+      (Data Cleaning & SQL Analysis)
+                      │
+                      ▼
+              Clean Reporting Tables
+      (clean_order_items, clean_products)
+                      │
+                      ▼
+               ODBC Data Source
+                      │
+                      ▼
+               Power Query (ETL)
+                      │
+                      ▼
+               Power BI Data Model
+                 (DAX Measures)
+                      │
+                      ▼
+          Interactive Business Dashboard
+```
 
-Data Engineering Steps
-Imported six CSV datasets into MySQL
-Created relational database schema
-Validated row counts and relationships
-Joined Product Category Translation table
-Converted Portuguese category names into English
-Removed incomplete September 2018 reporting period
-Built cleaned reporting tables:
-clean_order_items
-clean_products
-Validated business KPIs before visualization
-Connected Power BI to MySQL using ODBC instead of CSV imports
-SQL Analysis
+Unlike the initial version of this project, the dashboard is now connected directly to **MySQL** instead of importing CSV files into Power BI, creating a true end-to-end SQL analytics pipeline.
+
+---
+
+# Business Objectives
+
+- Monitor overall sales performance
+- Analyze customer purchasing behavior
+- Evaluate product category performance
+- Understand customer geographic distribution
+- Analyze payment preferences
+- Monitor delivery performance
+- Generate business recommendations through interactive dashboards
+
+---
+
+# Data Preparation & Cleaning
+
+The data was cleaned and validated inside **MySQL** before visualization.
+
+### Data Engineering Steps
+
+- Imported six CSV datasets into MySQL using `LOAD DATA LOCAL INFILE`
+- Created relational database schema
+- Validated row counts and relationships
+- Integrated Product Category Translation table
+- Converted Portuguese category names into English
+- Removed incomplete September 2018 reporting period
+- Built cleaned reporting tables:
+  - `clean_order_items`
+  - `clean_products`
+- Validated KPIs using SQL before dashboard development
+- Connected Power BI directly to MySQL using ODBC
+
+---
+
+# SQL Analysis
 
 The analytical workflow was performed in MySQL before visualization.
 
-SQL Operations
-Database creation
-Data import using LOAD DATA LOCAL INFILE
-Data validation
-Data cleaning
-Multi-table joins
-Aggregations
-Window functions
-KPI calculations
-Revenue analysis
-Customer analysis
-Product category analysis
-Key Metrics
-Total Revenue
-Total Orders
-Total Customers
-Average Order Value (AOV)
-Monthly Revenue Trend
-Delivery Success Rate
-Payment Method Distribution
-Order Status Distribution
-Top Product Categories
-Freight Cost Analysis
-Power BI Dashboard
+## SQL Operations
 
-The report consists of three interactive pages.
+- Database creation
+- CSV import
+- Data validation
+- Data cleaning
+- Multi-table joins
+- Aggregations
+- Window functions
+- KPI calculations
+- Revenue analysis
+- Customer analysis
+- Product category analysis
 
-1. Executive Overview
+## Key Metrics
 
-Executive summary of overall business performance.
+- Total Revenue
+- Total Orders
+- Total Customers
+- Average Order Value (AOV)
+- Monthly Revenue Trend
+- Delivery Success Rate
+- Payment Method Distribution
+- Order Status Distribution
+- Top Product Categories
+- Freight Cost Analysis
 
-KPIs
-Revenue
-Orders
-Customers
-Average Order Value
-Delivery Success Rate
-Visualizations
-Monthly Revenue Trend
-Top Product Categories
-Payment Method Distribution
-Order Fulfillment Status
-2. Customer Analysis
+---
 
-Customer distribution and regional performance.
+# Power BI Dashboard
 
-KPIs
-Total Customers
-Total States
-Revenue per Customer
-Orders
-Visualizations
-Revenue by State
-Orders by State
-Customers by State
-Top Cities by Revenue
-3. Product Analysis
+The report consists of three interactive dashboard pages.
 
-Product category performance and profitability.
+---
 
-KPIs
-Total Categories
-Top Category Revenue
-Order Items Count
-Category Average Order Value
-Visualizations
-Revenue by Category
-Revenue vs Freight Cost
-Order Items by Category
-Category Average Order Value
-Executive Summary
-R$13.59M total revenue
-99.4K completed orders
-96.1K customers
-112K order items
-97.02% delivery success rate
-R$136.68 average order value
-Key Business Insights
-Executive Overview
-Revenue exceeded R$13.5M across nearly 100K orders.
-Delivery success remained above 97%.
-Credit card payments dominated customer transactions.
-Revenue demonstrated consistent growth throughout the reporting period.
-Customer Analysis
-São Paulo generated the highest revenue and order volume.
-Revenue is concentrated within a relatively small number of states.
-Major metropolitan areas contribute the majority of business performance.
-Product Analysis
-Health & Beauty generated the highest revenue.
-Revenue is concentrated among a limited number of product categories.
-High-revenue categories also incur relatively high freight costs.
-Product portfolio optimization should prioritize top-performing categories.
-Dashboard Preview
-Executive Overview
+## 1. Executive Overview
+
+Provides a high-level summary of business performance.
+
+### KPIs
+
+- Revenue
+- Orders
+- Customers
+- Average Order Value (AOV)
+- Delivery Success Rate
+
+### Visualizations
+
+- Monthly Revenue Trend
+- Top Product Categories
+- Payment Method Distribution
+- Order Fulfillment Status
+
+---
+
+## 2. Customer Analysis
+
+Analyzes customer distribution and regional performance.
+
+### KPIs
+
+- Total Customers
+- Total States
+- Revenue per Customer
+- Orders
+
+### Visualizations
+
+- Revenue by State
+- Orders by State
+- Customers by State
+- Top Cities by Revenue
+
+---
+
+## 3. Product Analysis
+
+Analyzes product category performance and profitability.
+
+### KPIs
+
+- Total Categories
+- Top Category Revenue
+- Order Items Count
+- Category Average Order Value
+
+### Visualizations
+
+- Revenue by Category
+- Revenue vs Freight Cost
+- Order Items by Category
+- Category Average Order Value
+
+---
+
+# Executive Summary
+
+| KPI | Value |
+|------|-------:|
+| Revenue | **R$13.59M** |
+| Orders | **99.4K** |
+| Customers | **96.1K** |
+| Order Items | **112K** |
+| Delivery Success Rate | **97.02%** |
+| Average Order Value | **R$136.68** |
+
+---
+
+# Key Business Insights
+
+## Executive Overview
+
+- Generated **R$13.59M** revenue across nearly **100K orders**.
+- Maintained a **97.02% delivery success rate**, indicating strong operational performance.
+- Credit card payments accounted for the majority of transactions.
+- Revenue demonstrated consistent growth throughout the reporting period.
+
+---
+
+## Customer Analysis
+
+- São Paulo generated the highest revenue and order volume.
+- Revenue is concentrated across a small number of states.
+- Major metropolitan regions contribute the majority of business performance.
+- Customer distribution closely aligns with revenue contribution.
+
+---
+
+## Product Analysis
+
+- Health & Beauty generated the highest revenue.
+- Revenue is concentrated among a limited number of product categories.
+- High-revenue categories also incur relatively high freight costs.
+- Product portfolio optimization should focus on top-performing categories.
+
+---
+
+# Dashboard Preview
+
+## Executive Overview
+
 ![Executive Overview](images/Overview.png)
-Customer Analysis
+
+---
+
+## Customer Analysis
+
 ![Customer Analysis](images/Customer_Analysis.png)
-Product Analysis
+
+---
+
+## Product Analysis
+
 ![Product Analysis](images/Product_Analysis.png)
-Repository Structure
+
+---
+
+# Repository Structure
+
+```text
 olist-ecommerce-analysis/
 │
 ├── README.md
-│
-├── docs/
-│   └── Insights.md
 │
 ├── sql/
 │   └── olist_analysis.sql
 │
 ├── dashboard/
 │   └── Olist_dashboard.pbix
+│
+├── docs/
+│   └── Insights.md
 │
 ├── images/
 │   ├── Overview.png
@@ -202,21 +289,90 @@ olist-ecommerce-analysis/
 │
 └── Dataset/
     └── dataset_link.txt
-Power BI Dashboard
+```
 
-The PBIX dashboard is available via Google Drive:
+---
 
-(Keep your existing Google Drive link here.)
+# How to Run
 
-Future Improvements
-Add a dedicated Date dimension for DAX time intelligence.
-Organize all DAX measures into a dedicated _Measures table.
-Create SQL views for reporting (vw_clean_order_items, vw_clean_products) to separate the reporting layer from physical tables.
-Extend the dashboard with profitability and customer lifetime value analysis.
-Author
+## 1. SQL
 
-Ansh Agarwal
+Import the dataset into MySQL and execute:
 
-Aspiring Data Analyst | Data Science Student
+```sql
+SOURCE sql/olist_analysis.sql;
+```
 
-Skilled in SQL, Power BI, Python, Data Cleaning, Data Visualization, Machine Learning, and Business Analytics.
+---
+
+## 2. Power BI
+
+1. Install **MySQL ODBC Driver**.
+2. Create an ODBC DSN named:
+
+```text
+Olist_MySQL
+```
+
+3. Open:
+
+```text
+dashboard/Olist_dashboard.pbix
+```
+
+4. Refresh the dataset.
+
+---
+
+# Future Improvements
+
+- Create SQL reporting views (`vw_orders`, `vw_customers`, etc.)
+- Add a dedicated Date table for DAX time intelligence.
+- Organize DAX measures into a dedicated `_Measures` table.
+- Extend the dashboard with profitability and customer lifetime value analysis.
+- Publish the dashboard to Power BI Service.
+
+---
+
+# Repository
+
+```
+CSV Files
+      ↓
+MySQL Database
+      ↓
+SQL Cleaning & Analysis
+      ↓
+ODBC Connection
+      ↓
+Power Query
+      ↓
+Power BI Data Model
+      ↓
+Interactive Dashboard
+```
+
+---
+
+# Author
+
+## Ansh Agarwal
+
+**Aspiring Data Analyst | Data Science Student**
+
+**Skills**
+
+- SQL
+- MySQL
+- Power BI
+- Power Query
+- DAX
+- Python
+- Data Visualization
+- Data Cleaning
+- Business Analytics
+- Machine Learning
+
+---
+
+⭐ If you found this project useful, consider giving the repository a **Star**.
