@@ -1,237 +1,222 @@
-# E-Commerce Sales Analytics Dashboard
+Olist E-Commerce Sales Analytics
+End-to-End SQL + MySQL + Power BI Analytics Pipeline
 
-## Project Overview
+End-to-end business analytics project built on the Brazilian Olist E-Commerce dataset. The project demonstrates a complete analytics pipeline by loading raw CSV data into MySQL, performing data cleaning and business analysis using SQL, and building an interactive Power BI dashboard connected directly to the cleaned MySQL tables through ODBC.
 
-This project is an end-to-end Data Analytics solution built using SQL and Power BI on the Olist Brazilian E-Commerce dataset. The objective was to analyze sales performance, customer behavior, payment trends, delivery performance, and product category insights through interactive dashboards and business intelligence reporting.
+The objective is to transform raw transactional data into actionable business insights covering sales performance, customer behavior, product performance, payment trends, and operational efficiency.
 
-The project combines SQL-based data analysis with Power BI visualization to transform raw transactional data into actionable business insights.
+Tech Stack
+Database: MySQL
+Business Intelligence: Power BI
+Query Language: SQL
+Data Transformation: Power Query
+Analytics: DAX
+Data Source: Olist Brazilian E-Commerce Dataset (Kaggle)
+Dataset
 
----
-
-## Tools & Technologies
-
-* MySQL
-* Power BI
-* DAX
-* Power Query
-* Excel
-
----
-
-## Dataset
-
-**Dataset:** Olist Brazilian E-Commerce Dataset (Kaggle)
-(https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce)
+Source: Olist Brazilian E-Commerce Public Dataset (Kaggle)
 
 The dataset contains information related to:
 
-* Customers
-* Orders
-* Order Items
-* Payments
-* Products
+Customers
+Orders
+Order Items
+Payments
+Products
+Product Category Translation
 
----
+Approximately:
 
-## Business Objectives
+99K Orders
+96K Customers
+112K Order Items
+74 Product Categories
+Project Architecture
+Raw CSV Files
+        │
+        ▼
+MySQL Database
+(Data Cleaning & SQL Analysis)
+        │
+        ▼
+Clean Tables
+(clean_order_items, clean_products)
+        │
+        ▼
+ODBC Connection
+        │
+        ▼
+Power BI
+(Power Query + DAX)
+        │
+        ▼
+Interactive Dashboard
 
-* Monitor overall sales performance
-* Analyze customer distribution and regional performance
-* Identify top-performing product categories
-* Understand payment preferences
-* Evaluate order fulfillment and delivery success
-* Generate actionable business insights
+Unlike the earlier version of this project, the dashboard is now connected directly to MySQL instead of importing CSV files into Power BI, making it a true end-to-end SQL analytics pipeline.
 
----
+Business Objectives
+Monitor overall sales performance
+Analyze customer purchasing behavior
+Evaluate product category performance
+Understand customer geographic distribution
+Analyze payment preferences
+Monitor delivery performance
+Generate business recommendations using interactive dashboards
+Data Preparation & Cleaning
 
-## Data Preparation & Cleaning
+Before dashboard development, the data was cleaned and validated inside MySQL.
 
-Before analysis and dashboard development, several data preparation steps were performed to improve data quality and reporting accuracy:
+Data Engineering Steps
+Imported six CSV datasets into MySQL
+Created relational database schema
+Validated row counts and relationships
+Joined Product Category Translation table
+Converted Portuguese category names into English
+Removed incomplete September 2018 reporting period
+Built cleaned reporting tables:
+clean_order_items
+clean_products
+Validated business KPIs before visualization
+Connected Power BI to MySQL using ODBC instead of CSV imports
+SQL Analysis
 
-* Imported and modeled six datasets including Customers, Orders, Order Items, Payments, Products, and Product Category Translation.
-* Integrated the Product Category Translation table to convert Portuguese category names into English for improved dashboard readability.
-* Validated row counts and table relationships after data import.
-* Identified incomplete transaction records for September 2018 that created a misleading decline in revenue trends.
-* Filtered incomplete reporting periods to ensure accurate time-series analysis and business reporting.
-* Performed data quality checks and metric validation before building SQL queries and Power BI dashboards.
+The analytical workflow was performed in MySQL before visualization.
 
----
+SQL Operations
+Database creation
+Data import using LOAD DATA LOCAL INFILE
+Data validation
+Data cleaning
+Multi-table joins
+Aggregations
+Window functions
+KPI calculations
+Revenue analysis
+Customer analysis
+Product category analysis
+Key Metrics
+Total Revenue
+Total Orders
+Total Customers
+Average Order Value (AOV)
+Monthly Revenue Trend
+Delivery Success Rate
+Payment Method Distribution
+Order Status Distribution
+Top Product Categories
+Freight Cost Analysis
+Power BI Dashboard
 
-## SQL Analysis
+The report consists of three interactive pages.
 
-The project began with data loading and analysis in MySQL.
+1. Executive Overview
 
-### Key SQL Operations
+Executive summary of overall business performance.
 
-* Database and table creation
-* CSV data import using LOAD DATA LOCAL INFILE
-* Data validation and quality checks
-* Multi-table joins
-* Aggregations and KPI calculations
-* Trend analysis
-* Revenue analysis
-* Customer analysis
-* Product category analysis
+KPIs
+Revenue
+Orders
+Customers
+Average Order Value
+Delivery Success Rate
+Visualizations
+Monthly Revenue Trend
+Top Product Categories
+Payment Method Distribution
+Order Fulfillment Status
+2. Customer Analysis
 
-### Key Metrics Calculated
+Customer distribution and regional performance.
 
-* Total Revenue
-* Total Orders
-* Total Customers
-* Average Order Value (AOV)
-* Payment Method Distribution
-* Order Status Distribution
-* Monthly Revenue Trend
-* Top Product Categories by Revenue
+KPIs
+Total Customers
+Total States
+Revenue per Customer
+Orders
+Visualizations
+Revenue by State
+Orders by State
+Customers by State
+Top Cities by Revenue
+3. Product Analysis
 
----
+Product category performance and profitability.
 
-## Power BI Dashboard
-
-The dashboard consists of three interactive pages:
-
-### 1. Executive Overview
-
-Provides a high-level summary of business performance.
-
-KPIs:
-
-* Revenue
-* Orders
-* Customers
-* Average Order Value
-* Delivery Success Rate
-
-Visuals:
-
-* Monthly Revenue Trend
-* Top Product Categories
-* Payment Method Distribution
-* Order Fulfillment Status
-
----
-
-### 2. Customer Analysis
-
-Analyzes customer distribution and regional performance.
-
-KPIs:
-
-* Total Customers
-* Total States
-* Revenue per Customer
-* Orders
-
-Visuals:
-
-* Top States by Revenue
-* Top States by Orders
-* Customers by State
-* Top Cities by Revenue
-
----
-
-### 3. Product Analysis
-
-Analyzes category performance and product contribution.
-
-KPIs:
-
-* Total Categories
-* Top Category Revenue
-* Order Items Count
-* Top Category Orders
-
-Visuals:
-
-* Revenue by Category
-* Revenue vs Freight Cost by Category
-* Order Items by Category
-* Category Average Order Value
-
----
-
-## Key Business Insights
-
-### Executive Overview
-
-* Revenue exceeded R$13.5M across nearly 100K orders.
-* Delivery success rate remained above 97%.
-* Credit card transactions dominated customer payments.
-* Revenue displayed strong growth during the analyzed period.
-
-### Customer Analysis
-
-* São Paulo generated the highest revenue and order volume.
-* Revenue is concentrated within a small number of states.
-* Customer distribution closely aligns with revenue contribution.
-* Major metropolitan areas drive overall business performance.
-
-### Product Analysis
-
-* Beauty & Health emerged as the highest revenue-generating category.
-* Revenue is concentrated among a limited number of categories.
-* High-revenue categories often incur higher freight costs.
-* Product optimization should prioritize top-performing categories.
-
----
-
-## Dashboard Screenshots
-
-### Executive Overview
-
-![Executive Overview](Dashboard/Overview.png)
-
-### Customer Analysis
-
-![Customer Analysis](Dashboard/Customer_Analysis.png)
-
-### Product Analysis
-
-![Product Analysis](Dashboard/Product_Analysis.png)
-
----
-
-## Power BI Dashboard File
-
-The PBIX file is available through Google Drive:
-
-(https://drive.google.com/file/d/1faEX8rnsZh3cSC4V3QlktzsPHbxRpfei/view?usp=drive_link)
-
----
-
-## Repository Structure
-
-E-Commerce-Sales-Analytics-Dashboard/
-
+KPIs
+Total Categories
+Top Category Revenue
+Order Items Count
+Category Average Order Value
+Visualizations
+Revenue by Category
+Revenue vs Freight Cost
+Order Items by Category
+Category Average Order Value
+Executive Summary
+R$13.59M total revenue
+99.4K completed orders
+96.1K customers
+112K order items
+97.02% delivery success rate
+R$136.68 average order value
+Key Business Insights
+Executive Overview
+Revenue exceeded R$13.5M across nearly 100K orders.
+Delivery success remained above 97%.
+Credit card payments dominated customer transactions.
+Revenue demonstrated consistent growth throughout the reporting period.
+Customer Analysis
+São Paulo generated the highest revenue and order volume.
+Revenue is concentrated within a relatively small number of states.
+Major metropolitan areas contribute the majority of business performance.
+Product Analysis
+Health & Beauty generated the highest revenue.
+Revenue is concentrated among a limited number of product categories.
+High-revenue categories also incur relatively high freight costs.
+Product portfolio optimization should prioritize top-performing categories.
+Dashboard Preview
+Executive Overview
+![Executive Overview](images/Overview.png)
+Customer Analysis
+![Customer Analysis](images/Customer_Analysis.png)
+Product Analysis
+![Product Analysis](images/Product_Analysis.png)
+Repository Structure
+olist-ecommerce-analysis/
+│
 ├── README.md
-
-├── SQL/
-
-│ └── olist_analysis.sql
-
-├── Dashboard/
-
-│ ├── Overview.png
-
-│ ├── Customer_Analysis.png
-
-│ └── Product_Analysis.png
-
-├── Insights/
-
-│ └── Business_Insights.md
-
+│
+├── docs/
+│   └── Insights.md
+│
+├── sql/
+│   └── olist_analysis.sql
+│
+├── dashboard/
+│   └── Olist_dashboard.pbix
+│
+├── images/
+│   ├── Overview.png
+│   ├── Customer_Analysis.png
+│   └── Product_Analysis.png
+│
 └── Dataset/
+    └── dataset_link.txt
+Power BI Dashboard
 
-└── dataset_link.txt
+The PBIX dashboard is available via Google Drive:
 
----
+(Keep your existing Google Drive link here.)
 
-## Author
+Future Improvements
+Add a dedicated Date dimension for DAX time intelligence.
+Organize all DAX measures into a dedicated _Measures table.
+Create SQL views for reporting (vw_clean_order_items, vw_clean_products) to separate the reporting layer from physical tables.
+Extend the dashboard with profitability and customer lifetime value analysis.
+Author
 
 Ansh Agarwal
 
 Aspiring Data Analyst | Data Science Student
 
-Focused on SQL, Power BI, Python, Machine Learning, and Business Analytics.
+Skilled in SQL, Power BI, Python, Data Cleaning, Data Visualization, Machine Learning, and Business Analytics.
